@@ -3,7 +3,9 @@ import { Box, Container, TextField, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import axios from "axios";
 
-const API_WEATHER = `api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_API_KEY}&q=`
+axios.baseURL = ""
+
+const API_WEATHER = `https://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_API_KEY}&q=`
 
 function App() {
 
@@ -36,7 +38,8 @@ function App() {
     try {
       if(!city.trim()) throw {message: "City is required"}
 
-      const { data } = await axios.get(`${API_WEATHER}${city}`)
+      const response = await axios.get(`${API_WEATHER}${city}`)
+      const data = await response.json()
       console.log("response", data)
       
     } catch (error) {
