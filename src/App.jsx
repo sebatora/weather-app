@@ -97,7 +97,7 @@ function App() {
         component="h1"
         align="center"
       >
-        Weather App
+        The Weather App
       </Typography>
 
       <Box
